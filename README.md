@@ -26,7 +26,7 @@ OneTimeCopy does not store or transmit any one-time codes or any processed Messa
 
 | | Light Mode | Dark Mode |
 |--|--|--|
-| Menu bar icon | <p align="center"><img src="screenshots/menubar_light.png" width="250" hspace="100"> | <p align="center"><img src="screenshots/menubar_dark.png" width="250" hspace="100"> |
+| Menu bar icon | <p align="center"><img src="screenshots/menubar_light.png" width="250"> | <p align="center"><img src="screenshots/menubar_dark.png" width="250"> |
 | Main view | <p align="center"><img src="screenshots/preview_light.png" width="300"> | <p align="center"><img src="screenshots/preview_dark.png" width="300"> |
 | Permissions | <p align="center"><img src="screenshots/permissions_light.png" width="500"> | <p align="center"><img src="screenshots/permissions_dark.png"  width="500"> |
 | Settings | <p align="center"><img src="screenshots/settings_light.png" width="500"> | <p align="center"><img src="screenshots/settings_dark.png" width="500"> |

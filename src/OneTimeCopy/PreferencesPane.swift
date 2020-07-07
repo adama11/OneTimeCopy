@@ -55,7 +55,7 @@ struct PreferencesPaneView: View {
 
             Spacer()
             Group(content: {
-                Text("©2020 Adam Dama")
+                Text("© 2020 Adam Dama")
                     .opacity(0.50)
                     .frame(maxWidth: .infinity)
                     .padding(.bottom, 5)

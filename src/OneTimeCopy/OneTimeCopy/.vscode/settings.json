@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "/Users/adamdama/.local/share/virtualenvs/QuickCode-uovdP24l/bin/python",
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true
+}

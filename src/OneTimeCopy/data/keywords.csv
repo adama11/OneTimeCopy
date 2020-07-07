@@ -1,0 +1,103 @@
+SINGLE,DOUBLE,TRIPLE
+onetime,onetime code,one time code
+one-time,onetime passcode,one time passcode
+otp,onetime pin,one time pin
+otc,onetime password,one time password
+code,one-time code,sign in code
+passcode,one-time passcode,sign in passcode
+pin,one-time pin,sign in pin
+password,one-time password,sign in password
+identification,identification code,log in code
+verification,identification passcode,log in passcode
+security,identification pin,log in pin
+auth,identification password,log in password
+sign-in,verification code,one time code:
+sign in,verification passcode,one time passcode:
+login,verification pin,one time pin:
+log-in,verification password,one time password:
+logon,security code,sign in code:
+log-on,security passcode,sign in passcode:
+temporary,security pin,sign in pin:
+account,security password,sign in password:
+passcode:,auth code,log in code:
+pin:,auth passcode,log in passcode:
+password:,auth pin,log in pin:
+code:,auth password,log in password:
+is:,sign-in code,
+,sign-in passcode,
+,sign-in pin,
+,sign-in password,
+,login code,
+,login passcode,
+,login pin,
+,login password,
+,log-in code,
+,log-in passcode,
+,log-in pin,
+,log-in password,
+,logon code,
+,logon passcode,
+,logon pin,
+,logon password,
+,log-on code,
+,log-on passcode,
+,log-on pin,
+,log-on password,
+,temporary code,
+,temporary passcode,
+,temporary pin,
+,temporary password,
+,code is,
+,passcode is,
+,pin is,
+,password is,
+,onetime code:,
+,onetime passcode:,
+,onetime pin:,
+,onetime password:,
+,one-time code:,
+,one-time passcode:,
+,one-time pin:,
+,one-time password:,
+,verification code:,
+,verification passcode:,
+,verification pin:,
+,verification password:,
+,security code:,
+,security passcode:,
+,security pin:,
+,security password:,
+,auth code:,
+,auth passcode:,
+,auth pin:,
+,auth password:,
+,sign-in code:,
+,sign-in passcode:,
+,sign-in pin:,
+,sign-in password:,
+,login code:,
+,login passcode:,
+,login pin:,
+,login password:,
+,log-in code:,
+,log-in passcode:,
+,log-in pin:,
+,log-in password:,
+,logon code:,
+,logon passcode:,
+,logon pin:,
+,logon password:,
+,log-on code:,
+,log-on passcode:,
+,log-on pin:,
+,log-on password:,
+,temporary code:,
+,temporary passcode:,
+,temporary pin:,
+,temporary password:,
+,code is:,
+,passcode is:,
+,pin is:,
+,password is:,
+,one time,
+,log in,

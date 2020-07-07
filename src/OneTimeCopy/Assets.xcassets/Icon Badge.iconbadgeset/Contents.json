@@ -1,0 +1,68 @@
+{
+  "images" : [
+    {
+      "filename" : "icon_7.png",
+      "idiom" : "mac",
+      "scale" : "1x",
+      "size" : "7x7"
+    },
+    {
+      "filename" : "icon_14.png",
+      "idiom" : "mac",
+      "scale" : "2x",
+      "size" : "7x7"
+    },
+    {
+      "filename" : "icon_11.png",
+      "idiom" : "mac",
+      "scale" : "1x",
+      "size" : "11x11"
+    },
+    {
+      "filename" : "icon_22.png",
+      "idiom" : "mac",
+      "scale" : "2x",
+      "size" : "11x11"
+    },
+    {
+      "filename" : "icon_24.png",
+      "idiom" : "mac",
+      "scale" : "1x",
+      "size" : "24x24"
+    },
+    {
+      "filename" : "icon_48.png",
+      "idiom" : "mac",
+      "scale" : "2x",
+      "size" : "24x24"
+    },
+    {
+      "filename" : "icon_50.png",
+      "idiom" : "mac",
+      "scale" : "1x",
+      "size" : "50x50"
+    },
+    {
+      "filename" : "icon_100.png",
+      "idiom" : "mac",
+      "scale" : "2x",
+      "size" : "50x50"
+    },
+    {
+      "filename" : "icon_100-1.png",
+      "idiom" : "mac",
+      "scale" : "1x",
+      "size" : "100x100"
+    },
+    {
+      "filename" : "icon_200.png",
+      "idiom" : "mac",
+      "scale" : "2x",
+      "size" : "100x100"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

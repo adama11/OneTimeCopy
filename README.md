@@ -5,6 +5,8 @@ A small menu bar app to automatically copy any one-time passcodes from macOS Mes
 
 OneTimeCopy does not store or transmit any one-time codes or any processed Messages. All processing is done locally on your device.
 
+Download the app now from the `dist` folder.
+
 ## Features
  - Push notifications
  - Copy code from notification

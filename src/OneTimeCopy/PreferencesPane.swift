@@ -39,8 +39,8 @@ struct PreferencesPaneView: View {
     
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Text("Preferences")
+        VStack(alignment: .leading, spacing: 5, content: {
+            Text("Settings")
                 .font(.title)
                 .bold()
                 .frame(maxWidth: .infinity)
@@ -53,10 +53,54 @@ struct PreferencesPaneView: View {
             PreferenceToggle(enabled: $openOnStartupEnabled, key: "open_on_startup")
            
 
-//            Spacer()
-        }
+            Spacer()
+            Group(content: {
+                Text("©2020 Adam Dama")
+                    .opacity(0.50)
+                    .frame(maxWidth: .infinity)
+                    .padding(.bottom, 5)
+                Button(action: {
+                    NSWorkspace.shared.open(URL(string: "https://github.com/adama11/OneTimeCopy")!)
+                }, label: {
+                    HStack(content: {
+                        Image("github_logo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 16)
+                        Text("View Project")
+                            .bold()
+                        })
+                })
+                    .frame(maxWidth: .infinity)
+                    .padding(.bottom, 5)
+                    .buttonStyle(PlainButtonStyle())
+                HStack(alignment: .center, spacing: 5, content: {
+                    Button(action: {
+                        NSWorkspace.shared.open(URL(string: "https://raw.githubusercontent.com/adama11/OneTimeCopy/master/PrivacyPolicy.txt")!)
+                    }, label: {
+                        Text("Privacy Policy")
+                            .underline()
+                            .foregroundColor(Color.blue)
+                    })
+                        .buttonStyle(PlainButtonStyle())
+                    
+                    Button(action: {
+                        NSWorkspace.shared.open(URL(string: "https://raw.githubusercontent.com/adama11/OneTimeCopy/master/TermsAndConditions.txt")!)
+                    }, label: {
+                        Text("Terms & Conditions")
+                            .underline()
+                            .foregroundColor(Color.blue)
+                    })
+                        .buttonStyle(PlainButtonStyle())
+                })
+                    .frame(maxWidth: .infinity)
+                    .padding(.bottom, 5)
+                
+            })
+            
+        })
             .padding(.vertical, 20)
-            .frame(width:400, height: 400)
+            .frame(width: 425, height: 500)
         
     }
 }

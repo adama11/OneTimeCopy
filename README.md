@@ -4,7 +4,7 @@ A small menu bar app to automatically copy any one-time SMS passcodes from macOS
 
 [Safari on macOS](https://support.apple.com/guide/safari/autofill-security-codes-from-your-iphone-ibrwa4a6c6c6/mac) and [iOS](https://support.apple.com/guide/iphone/automatically-fill-in-sms-passcodes-on-iphone-iphc89a3a3af/ios) have the capability to copy any one-time passcodes automatically from your messages into a text field when you receive them. This app extends that capability beyond Safari to any system-wide app since it copies the code to the clipboard, allowing you to use the code in other browsers such as Chrome. 
 
-OneTimeCopy does not store or transmit any one-time codes or any processed Messages. All processing is done locally on your device.
+OneTimeCopy does not store or transmit any one-time codes or any processed messages. All processing is done locally on your device.
 
 Download the app now from the `dist` folder.
 

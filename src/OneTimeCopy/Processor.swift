@@ -1,5 +1,5 @@
 //
-//  Processor2.swift
+//  Processor.swift
 //  OneTimeCopy
 //
 //  Created by Adam Dama on 6/29/20.
@@ -63,8 +63,6 @@ class Processor: ObservableObject, SKQueueDelegate {
             acceptFileNotifications = true
             if var messagesFolder = FileManager.default.urls(for: .allLibrariesDirectory, in: .userDomainMask).first {
                 messagesFolder = messagesFolder.appendingPathComponent("Messages")
-                //queue.addPath(messagesFolder.appendingPathComponent("chat.db").pathComponents.joined(separator: "/"), notifyingAbout: .Write)
-                //queue.addPath(messagesFolder.appendingPathComponent("chat.db-shm").pathComponents.joined(separator: "/"), notifyingAbout: .Write)
                 skQueue.addPath(messagesFolder.appendingPathComponent("chat.db-wal").pathComponents.joined(separator: "/"), notifyingAbout: .Write)
             }
             canStartWatcher = false
@@ -77,7 +75,7 @@ class Processor: ObservableObject, SKQueueDelegate {
     }
     
     public func runSearch() -> (score: Int, code: String, date: Date)? {
-//        appDelegate.diskAccessController.getAccess()
+        appDelegate.diskAccessController.getAccess()
         
         var transcriptData : [(score: Int, code: String, date: Date)] = []
         if let db = loadDatabase() {
@@ -290,30 +288,6 @@ class Processor: ObservableObject, SKQueueDelegate {
         return nil
     }
     
-    private func getDatabaseHash() -> String {
-        /*
-        Generates an SHA256 hash of the database file contents in '/Users/[USERNAME]/Library/Messages'. Caches this value in
-        '~/[username]/Application Support/OneTimeCopy/.db_hash'.
-        */
-        var toHash: String = ""
-        if var messagesFolder = FileManager.default.urls(for: .allLibrariesDirectory, in: .userDomainMask).first {
-            messagesFolder = messagesFolder.appendingPathComponent("Messages")
-            if let fileString = try? Data(contentsOf: messagesFolder.appendingPathComponent("chat.db")) {
-                toHash += fileString.base64EncodedString()
-            }
-            if let fileString = try? Data(contentsOf: messagesFolder.appendingPathComponent("chat.db-shm")) {
-                toHash += fileString.base64EncodedString()
-            }
-            if let fileString = try? Data(contentsOf: messagesFolder.appendingPathComponent("chat.db-wal")) {
-                toHash += fileString.base64EncodedString()
-            }
-        }
-        
-        let result = SHA256(toHash)
-        writeStringToFile(contents: result, named: ".db_hash")
-        return result
-    }
-    
     private func writeStringToFile(contents: String, named fileName: String) {
         /*
         Writes 'contents' to file in '~/[username]/Application Support/OneTimeCopy/[fileName]'.
@@ -364,19 +338,6 @@ class Processor: ObservableObject, SKQueueDelegate {
             print("Couldn't retrieve file \(fileName)")
         }
         return nil
-    }
-    
-    private func checkForNewMessages() -> Bool {
-        /*
-        Checks for new messages by comparing the cached directory SHA256 hash to the current directory SHA256 hash.
-        */
-        
-        if let storedHash = retrieveFileContents(of: ".db_hash") {
-            let currentHash = getDatabaseHash()
-            return currentHash != storedHash
-        }
-        let _ = getDatabaseHash()
-        return true
     }
 }
 

@@ -14,6 +14,7 @@ Download the app now from the `dist` folder.
  - Enable/disable notification sound
  - Automatic detection
  - Automatic copying 
+ - Open on system start-up
  - Small menu bar footprint
  - Menu bar icon animation on detection
  - Light and dark themes

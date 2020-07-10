@@ -11,7 +11,7 @@ import SwiftUI
 import UserNotifications
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     var window: NSWindow!
     var popover: NSPopover!
@@ -67,6 +67,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = statusItem.button {
             iconAnimation.stop() // Show static imager
             button.action = #selector(togglePopoverWindow(_:))
+            button.sendAction(on: [.rightMouseDown, .leftMouseDown])
             button.imageScaling = .scaleProportionallyDown
         }
         
@@ -82,22 +83,46 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.setIsVisible(false)
     }
     
-    @objc func togglePopoverWindow(_ sender: AnyObject?) {
-        if let button = self.statusItem.button {
-            if window.isVisible {
-                window.setIsVisible(false)
-            } else {
-                window.setIsVisible(true)
-                NSApplication.shared.activate(ignoringOtherApps: true)
+    func menuDidClose(_ menu: NSMenu) {
+        statusItem.menu = nil // remove menu
+    }
 
-                let currentEventFrame = NSApp.currentEvent?.window?.frame
-                let xPos = CGFloat(currentEventFrame!.minX) - window.frame.width/2 + button.frame.width/2
-                let yPos = CGFloat(currentEventFrame!.maxY) - 27
-                window.setFrameTopLeftPoint(NSPoint(x: xPos, y: yPos))
-                
+
+    @objc func togglePopoverWindow(_ sender: AnyObject?) {
+        let event = NSApp.currentEvent!
+
+        if event.type == NSEvent.EventType.rightMouseDown {
+            // Right click action
+            createRightClickMenu()
+            if let button = self.statusItem.button {
+                button.performClick(nil)
             }
-         }
+        } else {
+            // Left click action
+            if let button = self.statusItem.button {
+               if window.isVisible {
+                   window.setIsVisible(false)
+               } else {
+                   window.setIsVisible(true)
+                   NSApplication.shared.activate(ignoringOtherApps: true)
+
+                   let currentEventFrame = NSApp.currentEvent?.window?.frame
+                   let xPos = CGFloat(currentEventFrame!.minX) - window.frame.width/2 + button.frame.width/2
+                   let yPos = CGFloat(currentEventFrame!.maxY) - 27
+                   window.setFrameTopLeftPoint(NSPoint(x: xPos, y: yPos))
+                   
+               }
+            }
+        }
         
+    }
+    private func createRightClickMenu() {
+        let menu = NSMenu()
+        menu.delegate = self
+        menu.addItem(NSMenuItem(title: "Quit OneTimeCopy", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(NSMenuItem(title: "v" + self.getAppVersion(), action: nil, keyEquivalent: ""))
+        statusItem.menu = menu
     }
     
     private func setUpNotificationSound() {
@@ -167,6 +192,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             openOnStartup(enable: value)
         default:
             break
+        }
+    }
+    
+    func getAppVersion() -> String {
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            return version
+        } else {
+            return ""
         }
     }
 }

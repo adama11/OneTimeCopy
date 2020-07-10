@@ -36,7 +36,7 @@ struct PreferencesPaneView: View {
     @State var autoCopyEnabled: Bool = UserDefaults.standard.bool(forKey: "auto_copy")
     @State var autoSearchEnabled: Bool = UserDefaults.standard.bool(forKey: "auto_scan")
     @State var openOnStartupEnabled: Bool = UserDefaults.standard.bool(forKey: "open_on_startup")
-    
+    private var appDelegate : AppDelegate = NSApplication.shared.delegate as! AppDelegate
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5, content: {
@@ -45,17 +45,31 @@ struct PreferencesPaneView: View {
                 .bold()
                 .frame(maxWidth: .infinity)
                 .padding(.bottom, 15)
-            PreferenceToggle(enabled: $notificationsEnabled, key: "push_notifications")
-            PreferenceToggle(enabled: $notificationSoundEnabled, key: "notification_sound")
-            PreferenceToggle(enabled: $animationEnabled, key: "found_animation")
-            PreferenceToggle(enabled: $autoCopyEnabled, key: "auto_copy")
-            PreferenceToggle(enabled: $autoSearchEnabled, key: "auto_scan")
-            PreferenceToggle(enabled: $openOnStartupEnabled, key: "open_on_startup")
-           
-
-            Spacer()
+            Group(content: {
+                PreferenceToggle(enabled: $notificationsEnabled, key: "push_notifications")
+                PreferenceToggle(enabled: $notificationSoundEnabled, key: "notification_sound")
+                PreferenceToggle(enabled: $animationEnabled, key: "found_animation")
+                PreferenceToggle(enabled: $autoCopyEnabled, key: "auto_copy")
+                PreferenceToggle(enabled: $autoSearchEnabled, key: "auto_scan")
+                PreferenceToggle(enabled: $openOnStartupEnabled, key: "open_on_startup")
+            })
+            Group(content: {
+                Button(action: {
+                    NSApplication.shared.terminate(self)
+                }) {
+                    Text("Close Application")
+                        .frame(width: 150, height: 30, alignment: .center)
+                }
+                    .buttonStyle(CustomButtonStyle())
+            })
+                .frame(maxWidth: .infinity, maxHeight: 30)
+                .padding(.vertical, 5)
+            
             Group(content: {
                 Text("© 2020 Adam Dama")
+                    .opacity(0.50)
+                    .frame(maxWidth: .infinity)
+                Text("v" + appDelegate.getAppVersion())
                     .opacity(0.50)
                     .frame(maxWidth: .infinity)
                     .padding(.bottom, 5)
@@ -72,7 +86,7 @@ struct PreferencesPaneView: View {
                         })
                 })
                     .frame(maxWidth: .infinity)
-                    .padding(.bottom, 5)
+                    .padding(.bottom, 10)
                     .buttonStyle(PlainButtonStyle())
                 HStack(alignment: .center, spacing: 5, content: {
                     Button(action: {
@@ -100,7 +114,7 @@ struct PreferencesPaneView: View {
             
         })
             .padding(.vertical, 20)
-            .frame(width: 425, height: 500)
+            .frame(width: 425, height: 550)
         
     }
 }

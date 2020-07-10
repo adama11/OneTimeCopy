@@ -6,7 +6,7 @@ A small menu bar app to automatically copy any one-time SMS passcodes from macOS
 
 OneTimeCopy does not store or transmit any one-time codes or any processed messages. All processing is done locally on your device.
 
-Download the app now from the `dist` folder.
+Download the app now from the `dist` folder or the `Releases` section.
 
 ## Features
  - Push notifications
@@ -25,7 +25,11 @@ Download the app now from the `dist` folder.
  - [Text Message Forwarding](https://support.apple.com/en-us/HT208386) set up on your iPhone/Mac 
  - Enable Full Disk Access
 
+## Dependencies
 
+ - [SQLite.swift](https://github.com/stephencelis/SQLite.swift)
+ - [SKQueue](https://github.com/daniel-pedersen/SKQueue)
+ 
 ## Screenshots
 
 | | Light Mode | Dark Mode |
